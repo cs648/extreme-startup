@@ -8,6 +8,7 @@ pathways = [
     (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman),
     (r'[^:]*: which of the following numbers is the largest: (.*)', [1], answer.largest),
     (r'[^:]*: what is the (\d+).. number in the Fibonacci sequence', [1], answer.fib)
+    (r'[^:]*: what is (\d) multiplied by (\d)', [1,2], answer.multiply)
 ]
 
 @app.route('/')

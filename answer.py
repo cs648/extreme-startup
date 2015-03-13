@@ -31,7 +31,13 @@ def fib(n):
     a, b = 0, 1
     for i in range(n):
         a, b = b, a + b
-    return a
+    return str(a)
+
+def multiply(a,b):
+    intA = int(a)
+    intB = int(b)
+    return str(intA * intB)
+
 
 def write_roman(num):
 
