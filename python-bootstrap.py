@@ -5,7 +5,6 @@ import re
 app = Flask(__name__)
 
 pathways = [
-    (),
     (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman)
 ]
 
@@ -16,7 +15,7 @@ def hello_world():
         for path in pathways:
             match = re.search(path[0],question)
             if match:
-                return path[2](match.group(path[1]))
+                return path[2](*[match.group(i) for i in path[1]])
         else:
             print question
         return ""
