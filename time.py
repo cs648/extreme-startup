@@ -1,9 +1,12 @@
 def convert_time(t):
     n = 0
     if t.endswith('pm'):
-        n += 12
+        n += 1200
+    if '.' in t:
+        t = t.split('.')
+        return int(t[0])*100+int(t[1])
 
-    return int(t[:-2])+n
+    return int(t[:-2])*100+n
 
 def timesort(a, b):
     return cmp(convert_time(a), convert_time(b))
