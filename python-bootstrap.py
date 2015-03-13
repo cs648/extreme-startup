@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 pathways = [
     (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman),
-    (r'[^:]*: which of the following numbers is the largest: (.*)', [1], answer.largest)
+    (r'[^:]*: which of the following numbers is the largest: (.*)', [1], answer.largest),
+    (r'[^:]*: what is the (\d+).. number in the Fibonacci sequence', [1], answer.fib)
 ]
 
 @app.route('/')
@@ -16,10 +17,14 @@ def hello_world():
         for path in pathways:
             match = re.search(path[0],question)
             if match:
-                return path[2](*[match.group(i) for i in path[1]])
+                ans = path[2](*[match.group(i) for i in path[1]])
+                print "Answered:", question, "with", ans
+                return ans
         else:
             print question
-        return answer.answer(question)
+        ans = answer.answer(question)
+        print "Answered:", question, "with", ans
+        return ans
     except Exception as e:
         print "Question:", question
         print "Exception", e

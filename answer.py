@@ -15,7 +15,7 @@ def timesort(a, b):
     return cmp(a, b)
 
 def largest(q):
-    return max([int(i.strip()) for i in q.split(',')])
+    return str(max([int(i.strip()) for i in q.split(',')]))
 
 def answer(q):
     if q == 'what is your name':
@@ -27,6 +27,11 @@ def answer(q):
         return min(q.split(':')[1].split(','), key=timesort)
     return ""
 
+def fib(n):
+    a, b = 0, 1
+    for i in range(n):
+        a, b = b, a + b
+    return a
 
 def write_roman(num):
 
