@@ -14,8 +14,10 @@ def timesort(a, b):
 
     return cmp(a, b)
 
+def largest(q):
+    return max([int(i.strip()) for i in q.split(',')])
+
 def answer(q):
-    match = re.search(r'.*what is the sum of (\\d+) and (\\d+)', q)
     if q == 'what is your name':
         return 'HungoverDeltas'
     match = re.search(r'.*what is the sum of (\\d+) and (\\d+)', q)

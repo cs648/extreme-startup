@@ -5,21 +5,24 @@ import re
 app = Flask(__name__)
 
 pathways = [
-    (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman)
+    (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman),
+    (r'[^:]*: which of the following numbers is the largest: (.*)', [1], answer.largest)
 ]
 
 @app.route('/')
 def hello_world():
+    question = request.args.get('q')
     try:
-        question = request.args.get('q')
         for path in pathways:
             match = re.search(path[0],question)
             if match:
                 return path[2](*[match.group(i) for i in path[1]])
         else:
             print question
-        return ""
-    except:
+        return answer.answer(question)
+    except Exception as e:
+        print "Question:", question
+        print "Exception", e
         return ""
 
 
