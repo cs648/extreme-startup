@@ -1,18 +1,6 @@
 import re
 from collections import OrderedDict
-
-def timesort(a, b):
-    na = 0
-    nb = 0
-    if a.endswith('pm'):
-        na += 12
-    if b.endswith('pm'):
-        nb += 12
-
-    a = int(a[:-2])+na
-    b = int(b[:-2])+nb
-
-    return cmp(a, b)
+from time import smallest_time
 
 def largest(q):
     return str(max([int(i.strip()) for i in q.split(',')]))
@@ -24,7 +12,7 @@ def answer(q):
     if match:
         return int(match.group(0)+match.group(1))
     if q.startswith('which of the following is earliest'):
-        return min(q.split(':')[1].split(','), key=timesort)
+        return smallest_time(q)
     return ""
 
 def fib(n):
