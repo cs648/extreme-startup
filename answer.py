@@ -2,6 +2,15 @@ import re
 from collections import OrderedDict
 from time import smallest_time
 
+def zero_sum(target, numbers):
+    target = int(target)
+    numbers = [int(i.strip()) for i in numbers.split(',')]
+    for i, x in enumerate(numbers):
+        for j in xrange(i, len(numbers)):
+            if x + numbers[j] == target:
+                return str(x) + ", " + str(numbers[j])
+    return ""
+
 def largest(q):
     return str(max([int(i.strip()) for i in q.split(',')]))
 

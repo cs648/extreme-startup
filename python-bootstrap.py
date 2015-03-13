@@ -7,8 +7,9 @@ app = Flask(__name__)
 pathways = [
     (r'[^:]*: Convert (\d+) into Roman Numerals', [1], answer.write_roman),
     (r'[^:]*: which of the following numbers is the largest: (.*)', [1], answer.largest),
-    (r'[^:]*: what is the (\d+).. number in the Fibonacci sequence', [1], answer.fib)
     (r'[^:]*: what is (\d) multiplied by (\d)', [1,2], answer.multiply)
+    (r'[^:]*: what is the (\d+).. number in the Fibonacci sequence', [1], answer.fib),
+    (r'[^:]*: Find 2 elementns that sum to (\d+) in: (.*)', [1,2], answer.zero_sum)
 ]
 
 @app.route('/')
@@ -33,4 +34,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1337, host="0.0.0.0")
+    app.run(port=1338, host="0.0.0.0")
