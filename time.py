@@ -1,5 +1,9 @@
 def convert_time(t):
     n = 0
+    try:
+        return int(t)
+    except ValueError:
+        pass
     if t.endswith('pm'):
         n += 1200
     if '.' in t:
