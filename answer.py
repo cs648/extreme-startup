@@ -43,7 +43,8 @@ def write_roman(num):
     roman[4] = "IV"
     roman[1] = "I"
 
-    def roman_num(num):
+    def roman_num(number):
+        num = int(number)
         for r in roman.keys():
             x, y = divmod(num, r)
             yield roman[r] * x
