@@ -17,7 +17,7 @@ def answer(q):
 
 def fib(n):
     a, b = 0, 1
-    for i in range(n):
+    for i in range(int(n)):
         a, b = b, a + b
     return str(a)
 
